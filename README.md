@@ -1,4 +1,5 @@
-# powershell
+
+## Notes from MS course: Windows PowerShell: Foundation Skills
 
 *	The standard powershell is just used to run scripts
     *	Ctrl+space is graphical autocomplete (show all options, properties etc)
