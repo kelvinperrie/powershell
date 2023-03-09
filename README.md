@@ -81,4 +81,17 @@
   *	Back tick (\`) is the escape character e.g. “\`$Home is $Home” <- outputs “$Home is [the value of $home]”
       *	\`t = tab, \`n = new line. There’s other garbage.
   *	Get-variable will get all existing variables (including predefined)
+   * Arrays – to create one do `$array = 1,3,2,”wow”,(get-date)` <- you can put any types in an array
+      * Can also create like `$array = @(“first item”)`
+      * Adding items to arrays causes a whole new copy of the array to be created (array list does not have this behaviour)
+      * Can use access by passing multiple indexes to pull back individual items e.g. $array[2,4] <- will get item at 2 and 4 (can also use range e.g. 3..5)
+      * Can access using negative indexes; -1 = last item e.g. $services[-1] = last item in services array
+      * Push items using `$arr += “wow”`
+      * Using sort-object on an array will not update the array, you have to assign back `$arr = $arr | sort-object`. Or use static `[array]::Sort($arr)` to update original.
+      * Format into a string using `“{1} and {3}” -f $arr` <- puts index 1 and 3 into the string. Putting colon after the index can cast e.g. {2:c} converts index 2 to currency type
+      * Contains and In will search the array for a value `$arr -contains 22` or `22 -in $arr` <- returns true or false
+      * -Split and -Join convert strings<->arrays. E.g. `“Bust this string” -split “ “` <- creates an array, items split on space. `$array -join “ “` <- creates a string with items joined by space
+* ArrayList – use if adding/removing items a lot.
+   * `$arrlist = New-Object -TypeName ArrayList` <- have to create this way
+   * Add new items with add method $arrlist.Add(3) . Access via index same as arrays
 
