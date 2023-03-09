@@ -25,7 +25,7 @@
 *	There are *-variable commands – generally don’t think you would use these to manipulate variables? Have to use new-variable with “-option constant” to get consts. Have to use set-variable to update a readonly var (!!!)
 *	Single quotes is literal (‘the variable is $var’ = no change) whereas a var in double quotes is expandable (“the variable is $var” = The variable is 5)
     *	“here strings” are multiline – prefix and append @, e.g. @”this could be multi line”@
-*	___Pipelines!__ They use the | to pass output from left to right
+*	__Pipelines!__ They use the | to pass output from left to right
     *	Arrays are enumerated and each item is passed to the next in the chain <- I’m not sure this is quite right; they’re still collections at the next step so whatev
     *	Frequently used: Sort-object, Select-Object, group-object, measure-object, compare-object
     *	`get-process | _sort-object_ -Property id` <- sort by the Id property
