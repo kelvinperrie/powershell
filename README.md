@@ -110,3 +110,11 @@
    * Can use a hashtable to do splatting – which is passing multiple params in one object
       `$param = @{ Average = true; Maximum = true; Property = length }`
       Then Get-ChildItem c:\temp\ | Measure-object @param  <- note the @ rather than $
+* Remoting – needs >=powershell 2.0 on local and remote + remoting must be enabled on client machines (on by default in win2012 server)
+   * Local admins or remote management users have access
+   * To execute a single command: Invoke-command -computername PC1,PC4 -scriptblock {get-service}
+      * To authenticate put in -credential dom\user  <- this will popup a dialog
+      * -filepath will execute a script on the remove machine
+   * To start a remote session on the machine: enter-pssession -computername [remotecomputername]
+      * Get back to local ps by using Exit-pssession
+
