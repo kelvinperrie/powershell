@@ -117,4 +117,21 @@
       * -filepath will execute a script on the remove machine
    * To start a remote session on the machine: enter-pssession -computername [remotecomputername]
       * Get back to local ps by using Exit-pssession
+* Flow 
+   * There is an if, else, ‘elseif’ <- it’s just .net but you have to use operators like -eq and no space between ‘elseif’
+   * Loops: For, While, Foreach, DoWhile, While. `For($var=5; $var -lt 11; $var++) { … }`
+   * Switch is MESSED UP! All expressions that match will be run (unless you put in a break)
+      `$colour = “Red”
+      Switch(colour) {
+	      Red { write-host “it is red” }
+	      Blue { write-host “it is blue” }
+	      Default { … }
+      }`
+      * You can pass in a collection into the switch; in the above you could have $colours = “Red”,”Blue”,”Green”
+      * You can wild card conditions! Bl* { write-host “the colour starts with Bl” }
+      * You can pass in a file (need -file flag) and it will check each line against the conditions???? `Switch -file c:\temp\myfile.txt {}`
+      * You can do: `switch -CaseSensitive () { … } `
+      * You can do `switch -regex ()` if you want your conditions to be regexs (please let us not)!??!?!?!?!?!?!?!?!?!
+      * You can do `switch -wildcard` if you want wildcards in your conditions
+   * We also got these bad boys: Break, continue, return, exit
 
