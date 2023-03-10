@@ -94,4 +94,19 @@
 * ArrayList – use if adding/removing items a lot.
    * `$arrlist = New-Object -TypeName ArrayList` <- have to create this way
    * Add new items with add method $arrlist.Add(3) . Access via index same as arrays
-
+* Hashtables – stored as key/value pairs. The keys are strings and unique. The values are any objects.
+   * Create with $hash = @{} . Can add key/values at creation time by putting on their own line ‘kelvin’ = ‘taranaki’
+   * There is a convertfrom-stringdata -stringdata $string which can create a hash table but seems kind of lame – format of string needs to be multiline with key = value on each line
+   * When doing group-object you can do -asHashtable -asString  to create
+   * Add using `$hash[“ben”] = “northland”` or `$hash.ben = “northland”` or `$hash.Add(“ben”, “northland”)`
+   * Access using the key. E.g. `$hash.kelvin` or `$hash[“kelvin”]`
+   * Update using `$hash["kelvin"] = "wellington"` or `$hash.kelvin = “wellington”`
+   * Use the pipeline to sort items `$hash.GetEnumerator() | sort-object -Property key`
+   * Finding items use Contains or ContainsKey (case insensitive) or ContainsValue (case sensitive)
+   * You can use a hashtable to create an object with custom properties, then create an array. It’s like having a class but half-assed?
+      `$customObject = @{ ‘Name’ = $name; ‘pingtime’ = $measure.average; … }`
+      Or use it to generate a PSCustomObject – which seems to pretty much be a class? 
+      `$myObject = [PSCustomObject]@{ Name = 'Kelvin'; Language = '.net'; Country = 'New Zealand' }`
+   * Can use a hashtable to do splatting – which is passing multiple params in one object
+      `$param = @{ Average = true; Maximum = true; Property = length }`
+      Then Get-ChildItem c:\temp\ | Measure-object @param  <- note the @ rather than $
